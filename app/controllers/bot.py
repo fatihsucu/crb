@@ -102,7 +102,7 @@ class Bot(object):
         if message in ["more", "show more"] and self.data:
             self.index += 5
             m_data = self.config.DEFAULT_TEMPLATE.copy()
-            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 5]
+            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 3]
             return self.api.send_facebook(self.user_id, m_data)
         if message == "ask-tomorrow-payload":
             self.usersModule.makeNotificationDaily(self.user_id)
@@ -170,20 +170,20 @@ class Bot(object):
         if title == "main-ingredient":
             self.mainIngredient = choice
             if choice == "chicken":
-                self.params += "&mainigredient=76"
-                self.readyseteatparams += "&mainigredient=76"
+                self.params += "&mainingredient=76"
+                self.readyseteatparams += "&mainingredient=76"
             elif choice == "beef":
-                self.params += "&mainigredient=70"
-                self.readyseteatparams += "&mainigredient=70"
+                self.params += "&mainingredient=70"
+                self.readyseteatparams += "&mainingredient=70"
             elif choice == "pork":
-                self.params += "&mainigredient=249"
-                self.readyseteatparams += "&mainigredient=249"
+                self.params += "&mainingredient=249"
+                self.readyseteatparams += "&mainingredient=249"
             elif choice == "seafood":
-                self.params += "&mainigredient=73"
-                self.readyseteatparams += "&mainigredient=73"
+                self.params += "&mainingredient=73"
+                self.readyseteatparams += "&mainingredient=73"
             elif choice == "pasta":
-                self.params += "&mainigredient=272"
-                self.readyseteatparams += "&mainigredient=272"
+                self.params += "&mainingredient=272"
+                self.readyseteatparams += "&mainingredient=272"
             elif choice == "vegetarian":
                 self.params += "&lifestyle=299"
                 self.readyseteatparams += "&lifestyle=299"
@@ -205,7 +205,7 @@ class Bot(object):
             elems = self.api.prepareRecipes(recipes, viewMoreUrl)
             self.data = elems
             m_data = self.config.DEFAULT_TEMPLATE.copy()
-            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 5]
+            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 3]
             r = self.api.send_facebook(self.user_id, m_data)
             self.logger.warning(r)
             return
@@ -241,7 +241,7 @@ class Bot(object):
             elems = self.api.prepareRecipes(recipes, viewMoreUrl)
             self.data = elems
             m_data = self.config.DEFAULT_TEMPLATE.copy()
-            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 5]
+            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 3]
             r = self.api.send_facebook(self.user_id, m_data)
             self.logger.warning(r)
             return
@@ -261,8 +261,11 @@ class Bot(object):
                 self.params += "&goodforyou=257&goodforyou=258&goodforyou=260"
                 self.readyseteatparams += "&goodforyou=257&goodforyou=258&goodforyou=260"
             elif choice == "seasonal":
-                self.params = "sortby=season,newest,rating,publisheddate&order=desc,desc,desc,desc&category=88"
-                self.readyseteatparams = "&category=88"
+                self.params = "sortby=season,newest,rating,publisheddate&order=desc,desc,desc,desc&category=88&season=330"
+                self.readyseteatparams = "&category=88&season=330"
+            elif choice == "quick":
+                self.params = "&totaltime=30"
+                self.readyseteatparams = "&totaltime=30"
 
             recipes = self.api.getRecipes(self.params)
             if not recipes:
@@ -271,7 +274,7 @@ class Bot(object):
             elems = self.api.prepareRecipes(recipes, viewMoreUrl)
             self.data = elems
             m_data = self.config.DEFAULT_TEMPLATE.copy()
-            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 5]
+            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 3]
             r = self.api.send_facebook(self.user_id, m_data)
             self.logger.warning(r)
             return
@@ -279,6 +282,8 @@ class Bot(object):
         if title == "breakfast":
             self.breakfastIngredient = choice
             if choice == "egg":
+                self.params += "&mainingredient=72"
+                self.readyseteatparams += "&mainingredient=72"
                 self.params += "&trait=9"
                 self.readyseteatparams += "&trait=9"
             elif choice == "casserole":
@@ -289,6 +294,7 @@ class Bot(object):
                 self.readyseteatparams += "&goodforyou=260&goodforyou=258"
             elif choice == "sweet":
                 self.params += "&trait=22"
+                self.readyseteatparams += "&trait=22"
                 # will add something sweet
                 pass
             return self.api.send_facebook(self.user_id, self.config.BREAKFAST_TIME_QUICK_REPLY)
@@ -309,7 +315,7 @@ class Bot(object):
                 elems = self.api.prepareRecipes(recipes, viewMoreUrl)
                 self.data = elems
                 m_data = self.config.DEFAULT_TEMPLATE.copy()
-                m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 5]
+                m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 3]
                 r = self.api.send_facebook(self.user_id, m_data)
                 self.logger.warning(r)
                 return
@@ -337,7 +343,7 @@ class Bot(object):
             elems = self.api.prepareRecipes(recipes, viewMoreUrl)
             self.data = elems
             m_data = self.config.DEFAULT_TEMPLATE.copy()
-            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 5]
+            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 3]
             r = self.api.send_facebook(self.user_id, m_data)
             self.logger.warning(r)
             return
@@ -358,7 +364,7 @@ class Bot(object):
                 self.readyseteatparams += "&mainingredient=75"
             elif choice == "salad":
                 self.params = "sortby=season,newest,rating,publisheddate&order=desc,desc,desc,desc&category=95&mainingredient=77"
-                self.readyseteatparams = "&category=95&mainingredient=77"
+                self.readyseteatparams = "&category=95&mainingredient=77&trait=92"
             elif choice == "beans":
                 self.params += "&mainingredient=310"
                 self.readyseteatparams += "&mainingredient=310"
@@ -370,7 +376,7 @@ class Bot(object):
             elems = self.api.prepareRecipes(recipes, viewMoreUrl)
             self.data = elems
             m_data = self.config.DEFAULT_TEMPLATE.copy()
-            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 5]
+            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 3]
             r = self.api.send_facebook(self.user_id, m_data)
             self.logger.warning(r)
             return
@@ -383,14 +389,15 @@ class Bot(object):
             elems = self.api.prepareRecipes(recipes, viewMoreUrl)
             self.data = elems
             m_data = self.config.DEFAULT_TEMPLATE.copy()
-            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 5]
+            m_data["message"]["attachment"]["payload"]["elements"] = self.data[self.index:self.index + 3]
             r = self.api.send_facebook(self.user_id, m_data)
             self.logger.warning(r)
             return
         return self.api.send_text_facebook(self.user_id, "You can write ‘start over’ to go to the first step")
 
     def send_welcome_messages(self):
-        r = self.api.send_text_facebook(self.user_id, "Welcome to our ReadySetEat bot. You can type 'start over' anytime.")
+        r = self.api.send_text_facebook(self.user_id, "Welcome to ReadySetEat bot.")
+        r2 = self.api.send_text_facebook(self.user_id, "You can type 'start over' anytime.")
         self.logger.warning("facebook response if {}".format(r))
 
     def send_no_results(self):
