@@ -280,7 +280,7 @@ class Bot(object):
 
         if title == "breakfast":
             self.breakfastIngredient = choice
-            if choice == "egg":
+            if choice == "eggs":
                 self.params += "&mainingredient=72"
                 self.readyseteatparams += "&mainingredient=72"
                 self.params += "&trait=9"
