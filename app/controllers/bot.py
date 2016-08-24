@@ -322,7 +322,7 @@ class Bot(object):
                 if choice == "veggies":
                     self.params += "&mainingredient=77&mainingredient=310"
                     self.readyseteatparams += "&mainingredient=77&mainingredient=310"
-                elif choice == "heathier":
+                elif choice == "healthier":
                     self.params += "&goodforyou=260"
                     self.readyseteatparams += "&goodforyou=260"
                 return self.api.send_facebook(self.user_id, self.config.HOT_OR_COLD_QUICK_REPLY)
