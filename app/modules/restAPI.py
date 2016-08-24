@@ -109,4 +109,5 @@ class RestAPI(object):
     def prepareViewMoreUrl(self, params):
         url = self.config.VIEW_MORE_URL + "?" + params
         url = url.lstrip("&")
+        self.logger.warning("View More Url {}".format(url))
         return url
