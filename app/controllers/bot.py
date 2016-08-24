@@ -32,8 +32,8 @@ class Bot(object):
         self.time = None
         self.region = None
         self.appetizerType = None
-        self.params = "" # RWS API'a istek yapan parametreler
-        self.readyseteatparams = "" # ReadySetEat'e gonderen  url'i hazilayan parametreler
+        self.params = ""  # RWS API'a istek yapan parametreler
+        self.readyseteatparams = ""  # ReadySetEat'e gonderen  url'i hazilayan parametreler
         self.dessert = None
         self.breakfastIngredient = None
         self.breakfastTime = None
@@ -44,9 +44,9 @@ class Bot(object):
         self.lastMessage = None
         self.lastTopic = None
         self.sumTitle = None
-        self.lastAnswerData = None # Bot'un son verdigi cevabin saklandigi yer
-        self.reports = reports.Reports(self.config) # Botun anlasilmayanlar raporladigi modul
-        self.api = restAPI.RestAPI(self.config) # Botun disariya istek yaptigi modul
+        self.lastAnswerData = None  # Bot'un son verdigi cevabin saklandigi yer
+        self.reports = reports.Reports(self.config)  # Botun anlasilmayanlar raporladigi modul
+        self.api = restAPI.RestAPI(self.config)  # Botun disariya istek yaptigi modul
         self.usersModule = users.Users(self.config)
         if self.isNew():
             self.logger.warning("new bot initialized")
@@ -396,7 +396,8 @@ class Bot(object):
 
     def send_welcome_messages(self):
         r = self.api.send_text_facebook(self.user_id, "Welcome to ReadySetEat bot.")
-        r2 = self.api.send_text_facebook(self.user_id, "You can type 'start over' anytime.")
+        r2 = self.api.send_text_facebook(self.user_id,
+                                         "Follow the prompts or type below to search recipes. You can type “start over” at any time.")
         self.logger.warning("facebook response if {}".format(r))
 
     def send_no_results(self):

@@ -74,12 +74,12 @@ class RestAPI(object):
                 elem["title"] = r["name"]
                 elem["buttons"] = [{
                     "type": "web_url",
-                    "url": self.config.REPICE_PATH + r["url"],
+                    "url": self.config.REPICE_PATH + r["url"] + "&utm_source=rse&utm_medium=facebook%20bot&utm_campaign=recipe%20tool",
                     "title": "Show Recipe"
                 },
                 {
                     "type": "web_url",
-                    "url": viewMoreUrl,
+                    "url": viewMoreUrl + "&utm_source=rse&utm_medium=facebook%20bot&utm_campaign=recipe%20tool",
                     "title": "View More"
                 }
                 ]
