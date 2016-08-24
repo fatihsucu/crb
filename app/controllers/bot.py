@@ -6,7 +6,6 @@ from app.modules import restAPI
 from app.modules import users
 from app.modules import reports
 from app.libraries import mongodb
-from app.libraries.helpers import stringFixer
 from app.libraries import loggerFactory
 
 import arrow
